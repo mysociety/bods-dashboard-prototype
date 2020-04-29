@@ -1,0 +1,44 @@
+html,
+body,
+.bods-dashboard {
+    height: 100%;
+}
+
+.bods-dashboard {
+    display: grid;
+    grid-auto-columns: 24rem;
+    grid-auto-flow: column;
+
+    header {
+        h2 {
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin: 0.25rem 0 0 0;
+        }
+    }
+
+    .card {
+        margin: 1.5rem 0;
+    }
+
+    .badge svg {
+        width: 1em;
+        height: auto;
+        margin-right: 0.25rem;
+    }
+}
+
+.bods-dashboard-column {
+    padding: 2rem;
+    border-right: 1px solid $gray-200;
+
+    &:last-child {
+        border-right: none;
+    }
+
+    &:nth-child(2n) {
+        background-color: $gray-100;
+    }
+}

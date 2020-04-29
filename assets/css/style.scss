@@ -10,3 +10,6 @@ $baseurl: "{{ site.baseurl }}";
 
  // from ../../bootstrap/scss
 @import "bootstrap";
+
+// from ../../_sass
+@import "bods-dashboard";
