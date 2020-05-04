@@ -1,0 +1,40 @@
+<div class="card bods-scorecard">
+    <h5 class="card-header d-flex align-items-center">
+        <span class="mr-auto">{{ include.company.name }}</span>
+      {% if include.company.errors %}
+        <span class="ml-2 badge badge-pill badge-danger d-flex">
+            {% include icons/prohibited.html classes="icon mr-1" %}
+            {{ include.company.errors | size }}
+        </span>
+      {% endif %}
+      {% if include.company.warnings %}
+        <span class="ml-2 badge badge-pill badge-warning d-flex">
+            {% include icons/exclamation.html classes="icon mr-1" %}
+            {{ include.company.warnings | size }}
+        </span>
+      {% endif %}
+    </h5>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <small class="scorecard-key">Company name</small>
+            <span class="scorecard-value">{{ include.company.name }}</span>
+        </li>
+        <li class="list-group-item {% if include.company.errors contains 'invalid_company_id' %}list-group-item-danger{% elsif include.company.warnings contains 'multiple_applications' %}list-group-item-warning{% endif %}">
+            <small class="scorecard-key">Company ID</small>
+            <span class="scorecard-value">{{ include.company.company_id }}</span>
+          {% if include.company.errors contains 'invalid_company_id' %}
+            <p class="scorecard-warning">Invalid company ID.</p>
+          {% endif %}
+          {% if include.company.warnings contains 'multiple_applications' %}
+            <p class="scorecard-warning">This company appears in multiple applications to this tender.</p>
+          {% endif %}
+        </li>
+        <li class="list-group-item {% if include.company.warnings contains 'blacklisted_jurisdiction' %}list-group-item-warning{% endif %}">
+            <small class="scorecard-key">Country of registration</small>
+            <span class="scorecard-value">{{ include.company.jurisdiction }}</span>
+          {% if include.company.warnings contains 'blacklisted_jurisdiction' %}
+            <p class="scorecard-warning">Company registered in a blacklisted jurisdiction.</p>
+          {% endif %}
+        </li>
+    </ul>
+</div>

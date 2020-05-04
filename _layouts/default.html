@@ -10,10 +10,14 @@
     <![endif]-->
     <link rel="stylesheet" href="{{ layout.css | default: '/assets/css/style.css' | prepend: site.baseurl }}">
 </head>
-<body class="{% if page.bodyclass %}{{ page.bodyclass }}{% endif %}">
+<body class="{% if layout.bodyclass %}{{ layout.bodyclass }}{% endif %} {% if page.bodyclass %}{{ page.bodyclass }}{% endif %}">
     <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
 
+    {% include site-header.html %}
+
     {{ content }}
+
+    <div class="site-footer"></div>
 
     <script src="{{ '/bootstrap/dist/js/bootstrap.bundle.min.js' | prepend: site.baseurl }}"></script>
 </body>

@@ -1,18 +1,36 @@
 ---
-layout: default
 ---
 
-<div class="bods-dashboard">
-    <div class="bods-dashboard-column">
-        {% include_relative index-column-1.html %}
+<div class="container-md">
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb my-4">
+            <li class="breadcrumb-item"><span class="fake-link">Tenders in progress</span></li>
+            <li class="breadcrumb-item active" aria-current="page">PROC-20-0001</li>
+        </ol>
+    </nav>
+
+    <!-- https://www.contractsfinder.service.gov.uk/Notice/29f29e22-5cdd-4797-b4f3-eb14b25d222e -->
+    <h1 class="mt-4">Tachograph Forensic Services</h1>
+    <p>Procurement notice <code>PROC-20-0001</code></p>
+
+    <dl class="row mt-4" style="max-width: 24em">
+        <dt class="col-sm-6">Published date</dt>
+        <dd class="col-sm-6">1st January 2020</dd>
+        <dt class="col-sm-6">Closing date</dt>
+        <dd class="col-sm-6">1st April 2020</dd>
+        <dt class="col-sm-6">Contract start date</dt>
+        <dd class="col-sm-6">1st June 2020</dd>
+        <dt class="col-sm-6">Value of contract</dt>
+        <dd class="col-sm-6">£120,000</dd>
+    </dl>
+
+    <h2 class="mt-5">Tenders received</h2>
+
+    <div class="application-summaries">
+  {% for application in site.applications %}
+    {% include application-summary-row.html id=application.slug %}
+  {% endfor %}
     </div>
-    <div class="bods-dashboard-column">
-        {% include_relative index-column-2.html %}
-    </div>
-    <div class="bods-dashboard-column">
-        {% include_relative index-column-3.html %}
-    </div>
-    <div class="bods-dashboard-column">
-        {% include_relative index-column-4.html %}
-    </div>
+
 </div>

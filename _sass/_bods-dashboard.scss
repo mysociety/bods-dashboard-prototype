@@ -1,44 +1,87 @@
-html,
-body,
-.bods-dashboard {
-    height: 100%;
+.icon {
+    width: auto;
+    height: 1em;
+    display: inline-block;
+    vertical-align: -0.2em;
 }
 
-.bods-dashboard {
+.navbar-brand {
+    font-weight: bold;
+
+    .icon {
+        height: 1.5em;
+        vertical-align: -0.4em;
+    }
+}
+
+.fake-link {
+    color: $link-color;
+    text-decoration: $link-decoration;
+    cursor: not-allowed;
+}
+
+code {
+    background: $gray-200;
+    border-radius: 0.2em;
+    padding: 0.25em 0.4em;
+}
+
+.site-footer {
+    height: 5rem;
+    background-color: $gray-200;
+    margin-top: ($spacer * 5);
+    box-shadow: 0 1000px 0 1000px $gray-200;
+}
+
+.application-summaries {
+    border-top: 1px solid $border-color;
+}
+
+.application-summary {
+    border-bottom: 1px solid $border-color;
+    padding: ($spacer * 0.75) 0;
+
+    @include media-breakpoint-up('sm') {
+        display: flex;
+        padding: $spacer 0;
+    }
+}
+
+.bods-application-page {
+    h2 {
+        @include font-size($h4-font-size);
+        margin: ($spacer * 3) 0 ($spacer * 1.5) 0;
+        padding-bottom: $spacer;
+        border-bottom: 1px solid $border-color;
+    }
+}
+
+.scorecards {
     display: grid;
-    grid-auto-columns: 24rem;
-    grid-auto-flow: column;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: ($spacer * 2);
+    margin: $spacer 0 ($spacer * 2) 0;
 
-    header {
-        h2 {
-            margin-bottom: 1rem;
-        }
-
-        p {
-            margin: 0.25rem 0 0 0;
-        }
+    @include media-breakpoint-up('md') {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .card {
-        margin: 1.5rem 0;
-    }
-
-    .badge svg {
-        width: 1em;
-        height: auto;
-        margin-right: 0.25rem;
+    @include media-breakpoint-up('lg') {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
-.bods-dashboard-column {
-    padding: 2rem;
-    border-right: 1px solid $gray-200;
+.scorecard-key {
+    display: block;
+}
 
-    &:last-child {
-        border-right: none;
+.scorecard-value {
+    .list-group-item-danger &,
+    .list-group-item-warning & {
+        font-weight: bold;
     }
+}
 
-    &:nth-child(2n) {
-        background-color: $gray-100;
-    }
+.scorecard-warning {
+    margin: 0;
 }

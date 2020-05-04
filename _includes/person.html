@@ -1,0 +1,33 @@
+<div class="card bods-scorecard">
+    <h5 class="card-header d-flex align-items-center">
+        <span class="mr-auto">{{ include.person.name }}</span>
+      {% if include.person.errors %}
+        <span class="ml-2 badge badge-pill badge-danger d-flex">
+            {% include icons/prohibited.html classes="icon mr-1" %}
+            {{ include.person.errors | size }}
+        </span>
+      {% endif %}
+      {% if include.person.warnings %}
+        <span class="ml-2 badge badge-pill badge-warning d-flex">
+            {% include icons/exclamation.html classes="icon mr-1" %}
+            {{ include.person.warnings | size }}
+        </span>
+      {% endif %}
+    </h5>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <small class="scorecard-key">Full name</small>
+            <span class="scorecard-value">{{ include.person.name }}</span>
+        </li>
+        <li class="list-group-item {% if include.person.warnings contains 'conflict_of_interest' or include.person.warnings contains 'multiple_applications' %}list-group-item-warning{% endif %}">
+            <small class="scorecard-key">National ID</small>
+            <span class="scorecard-value">{{ include.person.national_id }}</span>
+          {% if include.person.warnings contains 'conflict_of_interest' %}
+            <p class="scorecard-warning">Name and ID match a currently serving cabinet minister.</p>
+          {% endif %}
+          {% if include.person.warnings contains 'multiple_applications' %}
+            <p class="scorecard-warning">This person has control over multiple applicants to this tender.</p>
+          {% endif %}
+        </li>
+    </ul>
+</div>

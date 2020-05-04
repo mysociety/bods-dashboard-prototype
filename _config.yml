@@ -1,6 +1,9 @@
 title: Beneficial Ownership Dashboard
+
 host: 0.0.0.0
+
 markdown: kramdown
+
 exclude:
   - Gemfile
   - Gemfile.lock
@@ -12,7 +15,24 @@ exclude:
   - bootstrap/*.md
   - bootstrap/*.yml
   - bootstrap/*.json
+
 sass:
   load_paths:
     - _sass
     - bootstrap/scss
+
+collections:
+  applications:
+    output: true
+    permalink: /:collection/:title/
+
+defaults:
+  - scope:
+      path: ""
+      type: applications
+    values:
+      layout: application
+  - scope:
+      path: ""
+    values:
+      layout: default

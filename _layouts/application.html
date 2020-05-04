@@ -1,0 +1,38 @@
+---
+layout: default
+bodyclass: bods-application-page
+---
+
+<div class="container-md">
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb my-4">
+            <li class="breadcrumb-item"><span class="fake-link">Tenders in progress</span></li>
+            <li class="breadcrumb-item"><a href="{{ '/' | relative_url }}">PROC-20-0001</a></li>
+            <li class="breadcrumb-item active" aria-current="page">PROC-20-0001/{{ page.slug }}</li>
+        </ol>
+    </nav>
+
+    <h1 class="mt-4">{{ page.applicant.name }}</h1>
+    <p>Tender application <code>PROC-20-0001/{{ page.slug }}</code></p>
+
+    <h2>Applicant</h2>
+    <div class="scorecards">
+        {% include company.html company=page.applicant %}
+    </div>
+
+    <h2>Beneficial owners</h2>
+    <div class="scorecards">
+      {% for owner in page.owners %}
+        {% include person.html person=owner %}
+      {% endfor %}
+    </div>
+
+    <h2>Parent companies</h2>
+    <div class="scorecards">
+      {% for parent in page.parents %}
+        {% include company.html company=parent %}
+      {% endfor %}
+    </div>
+
+</div>
