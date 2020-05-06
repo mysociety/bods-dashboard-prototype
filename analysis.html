@@ -1,0 +1,66 @@
+---
+layout: default
+permalink: analysis
+---
+
+
+<div class="container-md">
+    <h1 class="mt-4">Spending analysis</h1>
+
+    <ul class="nav nav-tabs my-4">
+        <li class="nav-item">
+            <span class="nav-link active" href="#parents">By parent company</span>
+        </li>
+        <li class="nav-item">
+            <span class="nav-link fake-link">By beneficial owner</span>
+        </li>
+        <li class="nav-item">
+            <span class="nav-link fake-link">By supplier</span>
+        </li>
+    </ul>
+
+    <div class="d-sm-flex align-items-center my-2">
+        <label class="mr-auto d-flex align-items-center">
+            Show
+            <select class="form-control mx-2"><option>10</option></select>
+            rows
+        </label>
+        <label class="d-flex align-items-center">
+            Search
+            <input type="text" class="form-control ml-2" style="max-width: 20em">
+        </label>
+    </div>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th rowspan="2">Name</th>
+                <th rowspan="2">Tenders won</th>
+                <th colspan="6" class="text-center">Spend (£ millions)</th>
+            </tr>
+            <tr>
+                <th class="table-warning">Total</th>
+                <th></th>
+                <th>FY 2019</th>
+                <th>FY 2018</th>
+                <th>FY 2017</th>
+                <th>FY 2016</th>
+            </tr>
+        </thead>
+        <tbody>
+          {% for parent in site.data.analysis %}
+            <tr>
+                <td><span class="fake-link">{{ parent.name }}</a></td>
+                <td>{{ parent.wins }}</td>
+                <td class="table-warning">{{ parent.total }}</td>
+                <td style="width: 0"><svg class="js-four-year-sparkline" width="80" height="20" stroke-width="2"></svg></td>
+                <td>{{ parent.fy2019 }}</td>
+                <td>{{ parent.fy2018 }}</td>
+                <td>{{ parent.fy2017 }}</td>
+                <td>{{ parent.fy2016 }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+
+</div>
