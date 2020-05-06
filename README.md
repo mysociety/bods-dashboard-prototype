@@ -14,3 +14,15 @@ If `bundle exec jekyll serve --baseurl ''` is a bit long, you can do `make run` 
 ## How this repo was initially set up
 
 Mostly following the instructions at <https://github.com/mysociety/playbook>, except without the GOV.UK submodule, and with <https://github.com/twbs/bootstrap> as a submodule instead.
+
+## Tips for generating fake data
+
+Fake names, resident IDs, etc, were generated at the command line with [faker](https://github.com/joke2k/faker).
+
+    python3 -m venv virtualenv
+    . virtualenv/bin/activate
+    pip install Faker
+
+    faker -r 20 name
+    faker -r 20 bban
+    faker -r 20 company
