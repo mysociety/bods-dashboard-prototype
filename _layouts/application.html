@@ -13,7 +13,13 @@ bodyclass: bods-application-page
         </ol>
     </nav>
 
-    <h1 class="mt-4">{{ page.applicant.name }}</h1>
+    <div class="d-md-flex align-items-center mt-4">
+        <h1 class="mr-auto mb-2">{{ page.applicant.name }}</h1>
+        <p class="mb-2 text-md-right" style="font-size: 1.5rem">
+            {% include application-errors-badge.html id=page.slug classes="mr-3" %}
+            {% include application-warnings-badge.html id=page.slug classes="mr-3" %}
+        </p>
+    </div>
     <p>Tender application <code>PROC-20-0001/{{ page.slug }}</code></p>
 
     <h2>Applicant</h2>

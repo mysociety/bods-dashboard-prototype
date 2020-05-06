@@ -1,0 +1,17 @@
+{% assign application = site.applications | where: "slug", include.id | first %}
+{% assign errors = application.applicant.errors | size %}
+
+{% for owner in application.owners %}
+    {% for w in owner.errors %}
+        {% assign errors = errors | plus: 1 %}
+    {% endfor %}
+{% endfor %}
+{% for parent in application.parents %}
+    {% for w in parent.errors %}
+        {% assign errors = errors | plus: 1 %}
+    {% endfor %}
+{% endfor %}
+
+{% if errors > 0 %}
+    <span class="badge badge-pill badge-danger {{ include.classes }}">{% include icons/prohibited.html classes="icon mr-1" %} {{ errors }} error{% if errors != 1 %}s{% endif %}</span>
+{% endif %}
